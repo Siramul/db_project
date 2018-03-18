@@ -7,5 +7,5 @@ def index():
     return "Hello, World!"
 
 @app.route('/lumaris')
-def index():
+def luma():
     return "Lumaris is here!"
