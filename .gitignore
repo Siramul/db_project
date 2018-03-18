@@ -1,7 +1,0 @@
-bin/
-*__pycache__*
-*.pyc
-lib/
-.gitignore
-touch
-pip-selfcheck.json
