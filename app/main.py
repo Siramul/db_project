@@ -15,8 +15,6 @@ def login():
     return "No Login  for you!!!"
 
 
-
-
 @app.route('/UserApp/users')
 def users():
     return "Under construction"

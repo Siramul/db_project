@@ -11,14 +11,7 @@ class PartDAO:
         self.data.append(U3)
         self.data.append(U4)
 
-    def getAllParts(self):
-        # P1 = [122, 'Bolt', 0.5, 'blue']
-        # P2 = [74, 'Wire', 1.5, 'silver']
-        # P3 = [849, 'wood', 5, 'brow']
-        # result = []
-        # result.append(P1)
-        # result.append(P2)
-        # result.append(P3)
+    def get_all_users(self):
         return self.data
 
     def getUserById(self, id):

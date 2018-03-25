@@ -28,12 +28,15 @@ class PartHandler:
         parts.append(P2)
         return jsonify(Parts=parts)
 
-    def mapToDict(self, row):
+    def map_to_dict(self, row):
         result = {}
-        result['pid'] = row[0]
-        result['pname'] = row[1]
-        result['pprice'] = row[2]
-        result['pmaterial'] = row[3]
+        result['uid'] = row[0]
+        result['ufname'] = row[1]
+        result['ulname'] = row[2]
+        result['uphone'] = row[3]
+        result['uemail'] = row[4]
+        result['username'] = row[5]
+        result['upword'] = row[6]
         return result
     def mapToSupDict(self, row):
         result = {}
@@ -55,7 +58,7 @@ class PartHandler:
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:
-            mapped = self.mapToDict(result)
+            mapped = self.map_to_dict(result)
             return jsonify(Part=mapped)
 
 
