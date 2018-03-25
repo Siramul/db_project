@@ -1,5 +1,6 @@
 from flask import Flask, request
 from app.handler.users import UserHandler
+from app.handler.messages import MessageHandler
 
 app = Flask(__name__)
 
@@ -59,19 +60,19 @@ def get_users_by_username(username):
 # TODO
 @app.route('/MessageApp/messages')
 def messages():
-    return "Under construction"
+    return MessageHandler().get_all_messages()
 
 
 # TODO
 @app.route('/MessageApp/messages/<int:mid>')
-def getMessagesByMessageID():
-    return "Under construction"
+def get_messages_by_message_id(mid):
+    return MessageHandler().get_message_by_id(mid)
 
 
 # TODO
 @app.route('/MessageApp/messages/<int:msender>')
-def getMessagesBySender():
-    return "Under construction"
+def get_messages_by_sender(msender):
+    return MessageHandler().get_message_by_sender(msender)
 
 
 # TODO
@@ -100,8 +101,8 @@ def getMessagesByMedia():
 
 # TODO
 @app.route('/MessageApp/messages/<int:cid>')
-def getMessagesByChatID():
-    return "Under construction"
+def get_messages_by_chat_id(cid):
+    return MessageHandler().get_message_by_chat_id(cid)
 
 
 # TODO
