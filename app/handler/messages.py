@@ -11,6 +11,9 @@ class MessageHandler:
         result['sender'] = row[2]
         result['timestamp'] = row[3]
         result['like_dislike_counter'] = row[4]
+        result['reply_id'] = row[5]
+        result['content'] = row[6]
+        result['uri'] = row[7]
         return result
 
     def get_all_messages(self):
@@ -70,7 +73,25 @@ class MessageHandler:
         dao = MessageDAO()
         result = dao.get_messages_by_likes_dislikes(counter)
         if result is None:
-            return jsonify(Error="Message has no replies"), 404
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Message=mapped)
+
+    def get_message_by_content(self, text):
+        dao = MessageDAO()
+        result = dao.get_messages_by_content(text)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Message=mapped)
+
+    def get_message_by_media_uri(self, uri):
+        dao = MessageDAO()
+        result = dao.get_messages_by_media_uri(uri)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
         else:
             mapped = self.map_to_dict(result)
             return jsonify(Message=mapped)

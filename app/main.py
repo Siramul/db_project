@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask
 from app.handler.users import UserHandler
 from app.handler.messages import MessageHandler
 
@@ -77,26 +77,26 @@ def get_messages_by_sender(msender):
 
 # TODO
 @app.route('/MessageApp/messages/<int:replyid>')
-def getMessagesByReplyID():
-    return "Under construction"
+def get_messages_by_reply_id(replyid):
+    return MessageHandler().get_message_by_like_reply_id(replyid)
 
 
 # TODO
 @app.route('/MessageApp/messages/<string:timestamp>')
-def getMessagesByTimestamp():
-    return "Under construction"
+def get_messages_by_timestamp(timestamp):
+    return MessageHandler().get_message_by_timestamp(timestamp)
 
 
 # TODO
 @app.route('/MessageApp/messages/<string:content>')
-def getMessagesByContent():
-    return "Under construction"
+def get_messages_by_content(content):
+    return MessageHandler().get_message_by_content(content)
 
 
 # TODO
 @app.route('/MessageApp/messages/<string:media>')
-def getMessagesByMedia():
-    return "Under construction"
+def get_messages_by_media(media):
+    return MessageHandler().get_message_by_media_uri(media)
 
 
 # TODO
