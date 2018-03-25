@@ -28,25 +28,31 @@ def get_users_by_user_id(uid):
 
 # TODO
 @app.route('/UserApp/users/<string:ufname>')
-def getUsersByFirstName():
+def getUsersByFirstName(ufname):
     return "Under construction"
 
 
 # TODO
 @app.route('/UserApp/users/<string:ulname>')
-def getUsersByLastName():
+def getUsersByLastName(ulname):
     return "Under construction"
 
 
 # TODO
 @app.route('/UserApp/users/<int:uphone>')
-def getUsersByPhone():
+def getUsersByPhone(uphone):
     return "Under construction"
 
 
 # TODO
 @app.route('/UserApp/users/<string:uemail>')
-def getUsersByEmail():
+def getUsersByEmail(uemail):
+    return "Under construction"
+
+
+# TODO
+@app.route('/UserApp/users/<string:username>')
+def get_users_by_username(username):
     return "Under construction"
 
 
