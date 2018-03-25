@@ -49,12 +49,12 @@ class PartHandler:
             mapped_result.append(self.mapToDict(r))
         return jsonify(Part=mapped_result)
 
-    def getPartById(self, id):
+    def get_user_by_id(self, user_id):
         dao = PartDAO()
-        result = dao.getPartById(id)
-        if result == None:
+        result = dao.getUserById(user_id)
+        if result is None:
             return jsonify(Error="NOT FOUND"), 404
-        else :
+        else:
             mapped = self.mapToDict(result)
             return jsonify(Part=mapped)
 

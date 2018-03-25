@@ -24,8 +24,8 @@ def users():
 
 # TODO
 @app.route('/UserApp/users/<int:uid>')
-def get_users_by_user_id():
-    return "Under construction"
+def get_users_by_user_id(uid):
+    return PartHandler().get_user_by_id(uid)
 
 
 # TODO

@@ -21,7 +21,7 @@ class PartDAO:
         # result.append(P3)
         return self.data
 
-    def getPartById(self, id):
+    def getUserById(self, id):
         for r in self.data:
             if id == r[0]:
                 return r
