@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app.handler.parts import PartHandler
+from app.handler.users import UserHandler
 
 app = Flask(__name__)
 
@@ -23,7 +23,7 @@ def users():
 # TODO
 @app.route('/UserApp/users/<int:uid>')
 def get_users_by_user_id(uid):
-    return PartHandler().get_user_by_id(uid)
+    return UserHandler().get_user_by_id(uid)
 
 
 # TODO
@@ -114,25 +114,6 @@ def getChatGroupByChatID():
 @app.route('/ChatGroupApp/shatGroup/<string:cname>')
 def getChatByChatName():
     return "Under construction"
-
-
-@app.route('/PartApp/parts')
-def parts():
-    if request.args:
-        return PartHandler().searchParts(request.args)
-    else:
-        handler = PartHandler()
-        return handler.getAllParts()
-
-
-@app.route('/PartApp/parts/<int:pid>')
-def getPartById(pid):
-    return PartHandler().getPartById(pid)
-
-
-@app.route('/PartApp/parts/<int:pid>/suppliers')
-def getSuppliersPartById(pid):
-    return PartHandler().getSuppliersByPartId(pid)
 
 
 if __name__ == '__main__':
