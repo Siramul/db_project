@@ -1,6 +1,10 @@
 from flask import jsonify
 from app.dao.part import PartDAO
-class PartHandelr:
+
+
+class PartHandler:
+
+
     def getAllParts1(self):
         parts = ["screw", "wire", "planta"]
         result = ""
@@ -8,7 +12,7 @@ class PartHandelr:
             result = result + " " + p
         return result
 
-    def getAllParts(self):
+    def get_all_parts(self):
         P1 = {}
         P1['pid'] = 123
         P1['price'] = 0.30

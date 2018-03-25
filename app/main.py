@@ -1,5 +1,5 @@
 from flask import Flask, request
-from app.handler.parts import PartHandelr
+from app.handler.parts import PartHandler
 
 app = Flask(__name__)
 
@@ -121,20 +121,20 @@ def getChatByChatName():
 @app.route('/PartApp/parts')
 def parts():
     if request.args:
-        return PartHandelr().searchParts(request.args)
+        return PartHandler().searchParts(request.args)
     else:
-        handler = PartHandelr()
+        handler = PartHandler()
         return handler.getAllParts()
 
 
 @app.route('/PartApp/parts/<int:pid>')
 def getPartById(pid):
-    return PartHandelr().getPartById(pid)
+    return PartHandler().getPartById(pid)
 
 
 @app.route('/PartApp/parts/<int:pid>/suppliers')
 def getSuppliersPartById(pid):
-    return PartHandelr().getSuppliersByPartId(pid)
+    return PartHandler().getSuppliersByPartId(pid)
 
 
 if __name__ == '__main__':
