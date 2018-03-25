@@ -1,8 +1,8 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from app.handler.users import UserHandler
+from app.handler.chat import ChatHandler
 
-app = Flask(__name__)
-
+app = Flask(__name__, template_folder='template')
 
 @app.route('/')
 def home():
@@ -103,12 +103,13 @@ def getMessagesByMedia():
 def getMessagesByChatID():
     return "Under construction"
 
+@app.route('/AllChats/<int:uid>')
+def allAllUserChats(uid):
+    return render_template('project_webpage.html', chats = ChatHandler.getAllChats(uid))
 
-# TODO
-@app.route('/ChatGroupApp/chatGroup')
-def chatGroup():
-    return "Under construction"
-
+@app.route('/CreateChat/<int:uid>/<string:cname>')
+def createChat(uid, cname):
+    return ChatHandler.createChat(uid, cname)
 
 # TODO
 @app.route('/ChatGroupApp/chatGroup/<int:cid>')
@@ -123,4 +124,4 @@ def getChatByChatName():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
