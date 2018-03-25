@@ -1,4 +1,5 @@
 bin/
 lib/
+.idea
 *.pyc
 *__pycache__*
