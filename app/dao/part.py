@@ -1,15 +1,15 @@
 class PartDAO:
     def __init__(self):
-        P1 = [122, 'Bolt', 0.5, 'blue']
-        P2 = [74, 'Wire', 1.5, 'silver']
-        P3 = [849, 'wood', 5, 'brow']
-        P4 = [757, 'pvc', 5, 'blue']
+        U1 = [1,'Joe', 'Martin','7879388245', 'joe.martin@upr.edu','joe_martin','password']
+        U2 = [2,'Diego', 'Amador','7872349283', 'diego.amador@upr.edu','Diego_Amador','password']
+        U3 = [3,'Manuel', 'Martinez','7874628792', 'manuel.martinez@upr.edu','manuel_martinez','password']
+        U4 = [4,'Luis', 'Santiago','7877658935', 'luis.santiago@upr.edu','luis_santiago','password']
 
         self.data = []
-        self.data.append(P1)
-        self.data.append(P2)
-        self.data.append(P3)
-        self.data.append(P4)
+        self.data.append(U1)
+        self.data.append(U2)
+        self.data.append(U3)
+        self.data.append(U4)
 
     def getAllParts(self):
         # P1 = [122, 'Bolt', 0.5, 'blue']
