@@ -3,6 +3,7 @@ from app.handler.users import UserHandler
 from app.handler.messages import MessageHandler
 from app.handler.contacts import ContactHandler
 from app.handler.likes import LikeHandler
+from app.handler.members import MemberHandler
 
 app = Flask(__name__)
 
@@ -16,6 +17,12 @@ def home():
 @app.route('/login')
 def login():
     return "No Login  for you!!!"
+
+
+# TODO
+@app.route('/UserApp/members')
+def get_members():
+    return MemberHandler().getAllMembers()
 
 @app.route('/UserApp/users')
 def users():
@@ -76,7 +83,7 @@ def get_contacts_by_id():
 
 
 # TODO
-@app.route('/UserApp/users/likes')
+@app.route('/UserApp/likes')
 def get_likes():
     return LikeHandler().getAllLikes()
 
