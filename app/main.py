@@ -3,6 +3,7 @@ from app.handler.users import UserHandler
 from app.handler.messages import MessageHandler
 from app.handler.contacts import ContactHandler
 from app.handler.likes import LikeHandler
+from app.handler.chat import ChatHandler
 
 app = Flask(__name__)
 
@@ -145,6 +146,35 @@ def getChatGroupByChatID():
 def getChatByChatName():
     return "Under construction"
 
+#author: Lumaris
+#Requirement: Display purposes.
+@app.route('/AllChats/<int:uid>')
+def allAllUserChats(uid):
+    return ChatHandler.getAllChats(uid)
+
+#author: Lumaris
+#Requirement: Add a contact to a chat group.
+@app.route('/AddUserChat/<int:uid>/<int:cid>/<int:uidadd>')
+def addUserChat(uid, cid, uidadd):
+    return ChatHandler.addContactToChat(uid, cid, uidadd)
+
+#author:Lumaris
+#Requirement: Create a chat group with a given name.
+@app.route('/CreateChat/<int:uid>/<string:cname>')
+def createChat(uid, cname):
+    return ChatHandler.createChat(uid, cname)
+
+#author: Lumaris
+#Requirement: Remove a user from a chat group.
+@app.route('/RemoveUserChat/<int:uid>/<int:cid>/<int:uidremove>')
+def removeUserChat(uid,cid,uidremove):
+    return ChatHandler.removeUserFromChat(uid,cid,uidremove)
+
+#author:Lumaris
+#Requirement: Remove a chat group.
+@app.route('/RemoveChat/<int:uid>/<int:cid>')
+def removeChat(uid,cid):
+    return ChatHandler.removeChat(uid,cid)
 
 if __name__ == '__main__':
     app.run()
