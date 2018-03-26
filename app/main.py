@@ -3,6 +3,7 @@ from app.handler.users import UserHandler
 from app.handler.messages import MessageHandler
 from app.handler.contacts import ContactHandler
 from app.handler.likes import LikeHandler
+from app.handler.replies_to_users import ReplyHandler
 
 app = Flask(__name__)
 
@@ -18,10 +19,8 @@ def login():
     return "No Login  for you!!!"
 
 @app.route('/UserApp/users')
-def users():
-
-        handler = UserHandler()
-        return handler.getAllUsers()
+def get_all_users():
+    return UserHandler().get_all_users()
 
 
 # TODO
@@ -59,15 +58,18 @@ def getUsersByEmail(uemail):
 def get_users_by_username(username):
     return UserHandler().get_user_by_username(username)
 
+
 # TODO
 @app.route('/UserApp/users/password/<string:password>')
 def get_users_by_password(password):
     return UserHandler().get_user_by_password(password)
 
+
 # TODO
 @app.route('/UserApp/contacts')
 def get_contacts():
     return ContactHandler().getAllContacts()
+
 
 # TODO
 @app.route('/UserApp/contacts/<int:uid>')
@@ -79,6 +81,7 @@ def get_contacts_by_id():
 @app.route('/UserApp/users/likes')
 def get_likes():
     return LikeHandler().getAllLikes()
+
 
 # TODO
 @app.route('/MessageApp/messages')
@@ -126,6 +129,26 @@ def get_messages_by_media(media):
 @app.route('/MessageApp/messages/cid/<int:cid>')
 def get_messages_by_chat_id(cid):
     return MessageHandler().get_message_by_chat_id(cid)
+
+
+@app.route('/ReplyToUsersApp/replies')
+def get_all_replies():
+    return ReplyHandler().get_all_replies()
+
+
+@app.route('/ReplyToUsersApp/replies/uid/<int:uid>')
+def get_replies_by_uid(uid):
+    return ReplyHandler().get_replies_by_uid(uid)
+
+
+@app.route('/ReplyToUsersApp/replies/mid/<int:mid>')
+def get_replies_by_mid(mid):
+    return ReplyHandler().get_replies_by_mid(mid)
+
+
+@app.route('/ReplyToUsersApp/replies/uid&mid<int:uid,mid>')
+def get_replies_by_uid_and_mid(uid,mid):
+    return ReplyHandler().get_replies_by_uid_mid(uid, mid)
 
 
 # TODO
