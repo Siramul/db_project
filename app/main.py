@@ -64,43 +64,43 @@ def messages():
 
 
 # TODO
-@app.route('/MessageApp/messages/<int:mid>')
+@app.route('/MessageApp/messages/mid/<int:mid>')
 def get_messages_by_message_id(mid):
     return MessageHandler().get_message_by_id(mid)
 
 
 # TODO
-@app.route('/MessageApp/messages/<int:msender>')
+@app.route('/MessageApp/messages/sender/<int:msender>')
 def get_messages_by_sender(msender):
     return MessageHandler().get_message_by_sender(msender)
 
 
 # TODO
-@app.route('/MessageApp/messages/<int:replyid>')
+@app.route('/MessageApp/messages/replyid/<int:replyid>')
 def get_messages_by_reply_id(replyid):
     return MessageHandler().get_message_by_like_reply_id(replyid)
 
 
 # TODO
-@app.route('/MessageApp/messages/<string:timestamp>')
+@app.route('/MessageApp/messages/timestamp/<string:timestamp>')
 def get_messages_by_timestamp(timestamp):
     return MessageHandler().get_message_by_timestamp(timestamp)
 
 
 # TODO
-@app.route('/MessageApp/messages/<string:content>')
+@app.route('/MessageApp/messages/content/<string:content>')
 def get_messages_by_content(content):
     return MessageHandler().get_message_by_content(content)
 
 
 # TODO
-@app.route('/MessageApp/messages/<string:media>')
+@app.route('/MessageApp/messages/media/<string:media>')
 def get_messages_by_media(media):
     return MessageHandler().get_message_by_media_uri(media)
 
 
 # TODO
-@app.route('/MessageApp/messages/<int:cid>')
+@app.route('/MessageApp/messages/cid/<int:cid>')
 def get_messages_by_chat_id(cid):
     return MessageHandler().get_message_by_chat_id(cid)
 

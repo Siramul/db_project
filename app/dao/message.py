@@ -65,3 +65,10 @@ class MessageDAO:
                 return r
         return None
 
+    def remove_all_messages_from_chat(self, cid):
+        for r in self.data:
+            if cid == r[1]:
+                self.data.remove(r)
+                return True
+            return False
+
