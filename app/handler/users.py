@@ -1,39 +1,124 @@
-class UserDAO:
-    def __init__(self):
-        U1 = [1,'Joe', 'Martin','7879388245', 'joe.martin@upr.edu','joe_martin','password']
-        U2 = [2,'Diego', 'Amador','7872349283', 'diego.amador@upr.edu','Diego_Amador','password']
-        U3 = [3,'Manuel', 'Martinez','7874628792', 'manuel.martinez@upr.edu','manuel_martinez','password']
-        U4 = [4,'Luis', 'Santiago','7877658935', 'luis.santiago@upr.edu','luis_santiago','password']
+from flask import jsonify
+from app.dao.user import UserDAO
 
-        self.data = []
-        self.data.append(U1)
-        self.data.append(U2)
-        self.data.append(U3)
-        self.data.append(U4)
+
+class UserHandler:
+
+
+    def searchParts(self, args):
+        color = args.get('color')
+        dao = UserDAO()
+        result = dao.searchByColor(color)
+        mapped_result = []
+        for r in result:
+            mapped_result.append(self.mapToDict(r))
+        return jsonify(Part=mapped_result)
 
     def get_all_users(self):
-        return self.data
+        P1 = {}
+        P1['user_id'] = 1
+        P1['first_name'] = 'Joe'
+        P1['last_name'] = 'Martin'
+        P1['phone_number'] = '7879388245'
+        P1['e_mail'] = 'joe.martin@upr.edu'
+        P1['user_name'] = 'joe_martin'
+
+
+        P2 = {}
+        P2['pid'] = 456
+        P2['price'] = 1.50
+        P2['name'] = 'tuerca'
+
+        parts = []
+        parts.append(P1)
+        parts.append(P2)
+        return jsonify(Parts=parts)
 
     def get_user_by_id(self, id):
-        for r in self.data:
-            if id == r[0]:
-                return r
-        return None
+        dao = UserDAO()
+        result = dao.get_user_by_id(id)
+        if result == None:
+            return jsonify(Error="NOT FOUND"), 404
+        else :
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
 
-    def getSuppliersByPartId(self, id):
-        if id == 74:
-            return [['123', 'Home Depot']]
-        elif id == 122:
-            T = []
-            T.append(['123', 'Home Depot'])
-            T.append(['456', 'National'])
-            return T
-        else:
-            return []
-
-    def searchByColor(self, color):
-        result = []
-        for r in self.data:
-            if color == r[3]:
-                result.append(r)
+    def map_to_dict(self, row):
+        result = {}
+        result['u_id'] = row[0]
+        result['u_fname'] = row[1]
+        result['u_lname'] = row[2]
+        result['u_phone'] = row[3]
+        result['u_email'] = row[4]
+        result['username'] = row[5]
+        result['u_password'] = row[6]
         return result
+
+    def mapToSupDict(self, row):
+        result = {}
+        result['sid'] = row[0]
+        result['sname'] = row[1]
+        return result
+
+    def getAllUsers(self):
+        dao = UserDAO()
+        result = dao.get_all_users()
+        mapped_result = []
+        for r in result:
+            mapped_result.append(self.map_to_dict(r))
+        return jsonify(Part=mapped_result)
+
+    def get_user_by_fname(self, user_fname):
+        dao = UserDAO()
+        result = dao.get_user_by_fname(user_fname)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
+
+
+    def get_user_by_lname(self, user_lname):
+        dao = UserDAO()
+        result = dao.get_user_by_lname(user_lname)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
+
+    def get_user_by_phone(self, user_phone):
+        dao = UserDAO()
+        result = dao.get_user_by_phone(user_phone)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
+
+    def get_user_by_email(self, uemail):
+        dao = UserDAO()
+        result = dao.get_user_by_email(uemail)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
+
+    def get_user_by_username(self, username):
+        dao = UserDAO()
+        result = dao.get_user_by_username(username)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
+
+    def get_user_by_password(self, password):
+        dao = UserDAO()
+        result = dao.get_user_by_password(password)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Part=mapped)
