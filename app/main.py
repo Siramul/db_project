@@ -1,6 +1,8 @@
 from flask import Flask
 from app.handler.users import UserHandler
 from app.handler.messages import MessageHandler
+from app.handler.contacts import ContactHandler
+from app.handler.likes import LikeHandler
 
 app = Flask(__name__)
 
@@ -15,47 +17,68 @@ def home():
 def login():
     return "No Login  for you!!!"
 
-
 @app.route('/UserApp/users')
 def users():
-    return "Under construction"
+
+        handler = UserHandler()
+        return handler.getAllUsers()
 
 
 # TODO
-@app.route('/UserApp/users/<int:uid>')
+@app.route('/UserApp/users/id/<int:uid>')
 def get_users_by_user_id(uid):
     return UserHandler().get_user_by_id(uid)
 
 
 # TODO
-@app.route('/UserApp/users/<string:ufname>')
+@app.route('/UserApp/users/fname/<string:ufname>')
 def getUsersByFirstName(ufname):
-    return "Under construction"
+    return UserHandler().get_user_by_fname(ufname)
 
 
 # TODO
-@app.route('/UserApp/users/<string:ulname>')
+@app.route('/UserApp/users/lname/<string:ulname>')
 def getUsersByLastName(ulname):
-    return "Under construction"
+    return UserHandler().get_user_by_lname(ulname)
 
 
 # TODO
-@app.route('/UserApp/users/<int:uphone>')
+@app.route('/UserApp/users/phone/<int:uphone>')
 def getUsersByPhone(uphone):
-    return "Under construction"
+    return UserHandler().get_user_by_phone(uphone)
 
 
 # TODO
-@app.route('/UserApp/users/<string:uemail>')
+@app.route('/UserApp/users/email/<string:uemail>')
 def getUsersByEmail(uemail):
-    return "Under construction"
+    return UserHandler().get_user_by_email(uemail)
 
 
 # TODO
-@app.route('/UserApp/users/<string:username>')
+@app.route('/UserApp/users/username/<string:username>')
 def get_users_by_username(username):
-    return "Under construction"
+    return UserHandler().get_user_by_username(username)
 
+# TODO
+@app.route('/UserApp/users/password/<string:password>')
+def get_users_by_password(password):
+    return UserHandler().get_user_by_password(password)
+
+# TODO
+@app.route('/UserApp/contacts')
+def get_contacts():
+    return ContactHandler().getAllContacts()
+
+# TODO
+@app.route('/UserApp/contacts/<int:uid>')
+def get_contacts_by_id():
+    return ContactHandler().get_contact_by_id()
+
+
+# TODO
+@app.route('/UserApp/users/likes')
+def get_likes():
+    return LikeHandler().getAllLikes()
 
 # TODO
 @app.route('/MessageApp/messages')

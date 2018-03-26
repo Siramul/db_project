@@ -20,6 +20,42 @@ class UserDAO:
                 return r
         return None
 
+    def get_user_by_fname(self, fname):
+        for r in self.data:
+            if fname == r[1]:
+                return r
+        return None
+
+    def get_user_by_lname(self, lname):
+        for r in self.data:
+            if lname == r[2]:
+                return r
+        return None
+
+    def get_user_by_phone(self, phone):
+        for r in self.data:
+            if phone == r[3]:
+                return r
+        return None
+
+    def get_user_by_email(self, email):
+        for r in self.data:
+            if email == r[4]:
+                return r
+        return None
+
+    def get_user_by_username(self, username):
+        for r in self.data:
+            if username == r[5]:
+                return r
+        return None
+
+    def get_user_by_password(self, password):
+        for r in self.data:
+            if password == r[6]:
+                return r
+        return None
+
     def getSuppliersByPartId(self, id):
         if id == 74:
             return [['123', 'Home Depot']]
