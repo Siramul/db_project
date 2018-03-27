@@ -2,8 +2,6 @@ from flask import jsonify
 from app.dao.like import LikeDAO
 
 
-
-
 class LikeHandler:
 
   def getAllLikes(self):

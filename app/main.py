@@ -17,9 +17,9 @@ def home():
 def login():
     return "No Login  for you!!!"
 
+
 @app.route('/UserApp/users')
 def users():
-
         handler = UserHandler()
         return handler.getAllUsers()
 
@@ -59,15 +59,18 @@ def getUsersByEmail(uemail):
 def get_users_by_username(username):
     return UserHandler().get_user_by_username(username)
 
+
 # TODO
 @app.route('/UserApp/users/password/<string:password>')
 def get_users_by_password(password):
     return UserHandler().get_user_by_password(password)
 
+
 # TODO
 @app.route('/UserApp/contacts')
 def get_contacts():
     return ContactHandler().getAllContacts()
+
 
 # TODO
 @app.route('/UserApp/contacts/<int:uid>')
@@ -79,6 +82,7 @@ def get_contacts_by_id():
 @app.route('/UserApp/users/likes')
 def get_likes():
     return LikeHandler().getAllLikes()
+
 
 # TODO
 @app.route('/MessageApp/messages')
