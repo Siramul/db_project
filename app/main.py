@@ -18,6 +18,7 @@ def home():
 def login():
     return "No Login  for you!!!"
 
+
 @app.route('/UserApp/users')
 def get_all_users():
     return UserHandler().get_all_users()
