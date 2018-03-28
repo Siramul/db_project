@@ -1,6 +1,6 @@
 class MessageDAO:
     def __init__(self):
-        m1 = [1, 1, "Jean-Luc", "1987-03-25 03:47:30", 5, 0, "Make it so!", 0]
+        m1 = [1, 1, "Jean-Luc","1993-03-24 06:47:30", 5, 0,"Make it so!", 0]
         m2 = [2, 2, "Benjamin", "1993-03-24 06:47:30", 6, 1, "It is the will of the Prophets!", 12]
         m3 = [3, 3, "James", "1966-02-25 03:50:00", 7, 2, "What does God need with a Starship?", 3]
         m4 = [1, 1, "Katherine", "1995-03-25 03:47:30", 3, 4, "We're Starfleet officers; weird is part of the job.", 5]
@@ -28,34 +28,34 @@ class MessageDAO:
             return None
 
     def get_messages_by_sender(self, sender):
-        result = []
+
         for r in self.data:
-            if sender == r[3]:
-                result.append(r)
-        return result
+            if sender == r[2]:
+                r.append(r)
+        return r
 
     def get_messages_by_timestamp(self, timestamp):
-        result = []
+
         for r in self.data:
-            if timestamp == r[4]:
-                result.append(r)
-        return result
+            if timestamp == r[3]:
+                r.append(r)
+        return r
 
     def get_messages_by_likes_dislikes(self, counter):
         for r in self.data:
-            if counter == r[5]:
+            if counter == r[4]:
                 return r
         return None
 
     def get_messages_by_reply_id(self, rid):
         for r in self.data:
-            if rid == r[6]:
+            if rid == r[5]:
                 return r
         return None
 
     def get_messages_by_content(self, text):
         for r in self.data:
-            if text == r[7]:
+            if text == r[6]:
                 return r
         return None
 

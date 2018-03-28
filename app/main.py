@@ -18,6 +18,37 @@ def home():
 def login():
     return "No Login  for you!!!"
 
+# TODO
+@app.route('/register')
+def register():
+    return "A new User has been registered"
+
+# TODO
+@app.route('/createchat')
+def create_chat():
+    return "A new Chat has been created"
+
+
+# TODO
+@app.route('/addcontact')
+def register_contact():
+    return "A new Contact    has been registered"
+
+# TODO
+@app.route('/addcontacttochat')
+def add_contact_to_chat():
+    return "A User has been added to a chat"
+
+# TODO
+@app.route('/removeuserfromchat')
+def remove_user_from_chat():
+    return "A User has been removed from a chat"
+
+# TODO
+@app.route('/removeuserfromcontacts')
+def remove_user_from_contacts():
+    return "A User has been removed from a contacts list"
+
 
 # TODO
 @app.route('/UserApp/members')
@@ -100,7 +131,7 @@ def get_messages_by_message_id(mid):
 
 
 # TODO
-@app.route('/MessageApp/messages/sender/<int:msender>')
+@app.route('/MessageApp/messages/sender/<string:msender>')
 def get_messages_by_sender(msender):
     return MessageHandler().get_message_by_sender(msender)
 
