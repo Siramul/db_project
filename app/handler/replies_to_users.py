@@ -11,7 +11,7 @@ class ReplyHandler:
         return result
 
     def get_all_replies(self):
-        dao = ReplyDAO
+        dao = ReplyDAO()
         result = dao.get_all_replies()
         mapped_result = []
         for r in result:
@@ -19,7 +19,7 @@ class ReplyHandler:
         return jsonify(Reply=mapped_result)
 
     def get_replies_by_uid(self, uid):
-        dao = ReplyDAO
+        dao = ReplyDAO()
         result = dao.get_replies_by_uid(uid)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
@@ -28,7 +28,7 @@ class ReplyHandler:
             return jsonify(Reply=mapped)
 
     def get_replies_by_mid(self, mid):
-        dao = ReplyDAO
+        dao = ReplyDAO()
         result = dao.get_replies_by_mid(mid)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
@@ -37,7 +37,7 @@ class ReplyHandler:
             return jsonify(Reply=mapped)
 
     def get_replies_by_uid_mid(self, uid, mid):
-        dao = ReplyDAO
+        dao = ReplyDAO()
         result = dao.get_replies_by_uid_and_mid(uid, mid)
         if result is None:
             return jsonify(Error="NOT FOUND")

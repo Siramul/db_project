@@ -28,8 +28,8 @@ class ReplyDAO:
 
     def get_replies_by_uid_and_mid(self, uid, mid):
         for r in self.data:
-            if uid == r[1]:
-                if mid == r[2]:
+            if uid == r[0]:
+                if mid == r[1]:
                     return r
                 return None
             return None

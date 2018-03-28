@@ -97,10 +97,14 @@ def get_messages_by_message_id(mid):
 
 
 # TODO
-@app.route('/MessageApp/messages/sender/<int:msender>')
-def get_messages_by_sender(msender):
-    return MessageHandler().get_message_by_sender(msender)
+@app.route('/MessageApp/messages/sender/<string:sender>')
+def get_messages_by_sender(sender):
+    return MessageHandler().get_message_by_sender(sender)
 
+
+@app.route('/MessageApp/messages/likedislike/<int:counter>')
+def get_messages_by_like_dislike(counter):
+    return MessageHandler().get_message_by_like_dislike_counter(counter)
 
 # TODO
 @app.route('/MessageApp/messages/replyid/<int:replyid>')
@@ -147,7 +151,7 @@ def get_replies_by_mid(mid):
     return ReplyHandler().get_replies_by_mid(mid)
 
 
-@app.route('/ReplyToUsersApp/replies/uid&mid<int:uid,mid>')
+@app.route('/ReplyToUsersApp/replies/uid&mid/<int:uid>/<int:mid>')
 def get_replies_by_uid_and_mid(uid,mid):
     return ReplyHandler().get_replies_by_uid_mid(uid, mid)
 
@@ -171,4 +175,4 @@ def getChatByChatName():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
