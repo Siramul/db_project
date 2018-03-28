@@ -71,15 +71,20 @@ class UserHandler:
     def get_user_by_fname(self, user_fname):
         dao = UserDAO()
         result = dao.get_user_by_fname(user_fname)
-
-        return jsonify(Part=result)
+        if not result:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            return jsonify(Part=result)
 
 
     def get_user_by_lname(self, user_lname):
         dao = UserDAO()
         result = dao.get_user_by_lname(user_lname)
+        if not result:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            return jsonify(Part=result)
 
-        return jsonify(Part=result)
 
 
     def get_user_by_phone(self, user_phone):
