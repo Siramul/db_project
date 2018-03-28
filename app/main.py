@@ -234,5 +234,25 @@ def get_chat_by_id(uid, cid):
     return ChatHandler().getChatsById(uid, cid)
 
 
+@app.route('/LikeMessage')
+def like_message():
+    return "Message liked!"
+
+
+@app.route('/DislikeMessage')
+def dislike_message():
+    return "Message disliked!"
+
+
+@app.route('/PostMessage/<string:message')
+def post_message(message):
+    return "Message " + message + " posted!"
+
+
+@app.route('/ReplyMessage/<string:reply>')
+def post_reply(reply):
+    return "Reply " + reply + " posted!"
+
+
 if __name__ == '__main__':
     app.run(debug=True)
