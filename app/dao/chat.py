@@ -1,14 +1,15 @@
+from app.dao import contains
 from app.dao import message
 
 
 class Chat:
     def __init__(self, u_id):
-        #Row Description [c_id, c_name, c_manager, c_members,]
-        C1 = [1, 'Ejecutivos del Jangueo', 1, [1,3,46,752]]
-        C2 = [2, 'Plan Fiscal', 2, [2,3,46,752]]
-        C3 = [3, 'UPRM gana la LAI', 3, [2,3,46,752]]
-        C4 = [4, 'ICOM, los mejores!', 4, [2,3,4,752]]
-        C5 = [5, 'Las mujeres al poder', 5, [2,3,46,752,5]]
+        #Row Description [c_id, c_name, c_manager]
+        C1 = [1, 'Ejecutivos del Jangueo', 1]
+        C2 = [2, 'Plan Fiscal', 2]
+        C3 = [3, 'UPRM gana la LAI', 3]
+        C4 = [4, 'ICOM, los mejores!', 4]
+        C5 = [5, 'Las mujeres al poder', 5]
 
         self.u_id = u_id
         self.data = [C1, C2, C3, C4, C5]
@@ -16,6 +17,14 @@ class Chat:
     # Handler and Route DONE
     def get_all_chats(self):
         return self.data
+
+    def get_chat_by_id(self, c_id):
+        result = []
+        for r in self.data:
+            if c_id == r[0]:
+                result.append(r)
+        return result
+
 
     # Handler and Route DONE
     def get_chat_managed(self):
@@ -57,6 +66,7 @@ class Chat:
     # TODO: Handler and Route
     def remove_chat(self,c_id):
         message.remove_all_message_from_chat(self,c_id)
+        contains.remove_all_content_from_chat(c_id)
         for r in self.data:
             if self.u_id == r[2] and c_id == r[0]:
                 self.data.remove(r)

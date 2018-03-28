@@ -4,6 +4,7 @@ from app.handler.messages import MessageHandler
 from app.handler.contacts import ContactHandler
 from app.handler.likes import LikeHandler
 from app.handler.chat import ChatHandler
+from app.handler.contains import ContainsHandler
 
 app = Flask(__name__)
 
@@ -176,5 +177,15 @@ def removeUserChat(uid,cid,uidremove):
 def removeChat(uid,cid):
     return ChatHandler.removeChat(uid,cid)
 
+#author:Lumaris
+#Requirement: Contains relation display purposes.
+@app.route('/ContainedMessagesId/<int:uid>/<int:cid>')
+def displayContainedMessagesId(uid, cid):
+    return ContainsHandler.getAllIdMessageContainedInChat(uid, cid)
+
+@app.route('/ChatApp/<int:uid>/<int:cid>')
+def getChatByID(uid,cid):
+    return ChatHandler().getChatsById(uid, cid)
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -65,6 +65,7 @@ class MessageDAO:
                 return r
         return None
 
+    #No handle or route needed only for chat implementation purposes.
     def remove_all_messages_from_chat(self, cid):
         for r in self.data:
             if cid == r[1]:
