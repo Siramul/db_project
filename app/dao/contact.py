@@ -1,4 +1,3 @@
-
 class ContactDAO:
     def __init__(self):
         C1 = [1,2,'1,2']
