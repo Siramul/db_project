@@ -18,7 +18,8 @@ class MessageDAO:
     def get_messages_by_id(self, mid):
         for r in self.data:
             if mid == r[0]:
-                return r
+                r.append(r)
+            print(r)
             return None
 
     def get_messages_by_chat_id(self, cid):
@@ -28,40 +29,40 @@ class MessageDAO:
             return None
 
     def get_messages_by_sender(self, sender):
-        result = []
         for r in self.data:
-            if sender == r[3]:
-                result.append(r)
-        return result
+            if sender == r[2]:
+                return r
+        print(r)
+        return None
 
     def get_messages_by_timestamp(self, timestamp):
-        result = []
         for r in self.data:
-            if timestamp == r[4]:
-                result.append(r)
-        return result
+            if timestamp == r[3]:
+                return r
+        print(r)
+        return None
 
     def get_messages_by_likes_dislikes(self, counter):
         for r in self.data:
-            if counter == r[5]:
+            if counter == r[4]:
                 return r
         return None
 
     def get_messages_by_reply_id(self, rid):
         for r in self.data:
-            if rid == r[6]:
+            if rid == r[5]:
                 return r
         return None
 
     def get_messages_by_content(self, text):
         for r in self.data:
-            if text == r[7]:
+            if text == r[6]:
                 return r
         return None
 
     def get_messages_by_media_uri(self, uri):
         for r in self.data:
-            if uri == r[8]:
+            if uri == r[7]:
                 return r
         return None
 

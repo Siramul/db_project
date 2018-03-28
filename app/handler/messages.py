@@ -69,9 +69,9 @@ class MessageHandler:
             mapped = self.map_to_dict(result)
             return jsonify(Message=mapped)
 
-    def get_message_by_like_reply_id(self, counter):
+    def get_message_by_like_reply_id(self, rid):
         dao = MessageDAO()
-        result = dao.get_messages_by_likes_dislikes(counter)
+        result = dao.get_messages_by_reply_id(rid)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:

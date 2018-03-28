@@ -1,11 +1,12 @@
 from flask import jsonify
-from app.dao.like import LikeDAO
+from app.dao.member import MemberDAO
 
 
-class LikeHandler:
-    def get_all_likes(self):
-        dao = LikeDAO()
-        result = dao.get_all_likes()
+class MemberHandler:
+
+    def get_all_members(self):
+        dao = MemberDAO()
+        result = dao.get_all_members()
         mapped_result = []
         for r in result:
             mapped_result.append(self.map_to_dict(r))
@@ -14,7 +15,6 @@ class LikeHandler:
     def map_to_dict(self, row):
         result = {}
         result['u_id'] = row[0]
-        result['message_id'] = row[1]
-        result['like'] = row[2]
-        result['primary_key']=row[3]
+        result['chat_id'] = row[1]
+        result['primary_key'] = row[2]
         return result
