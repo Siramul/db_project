@@ -9,16 +9,15 @@ class MessageDAO:
         self.data.append(m1)
         self.data.append(m2)
         self.data.append(m3)
-        self.data.append(m3)
         self.data.append(m4)
 
     def get_all_messages(self):
         return self.data
 
-    def get_messages_by_id(self, mid):
+    def get_messages_by_message_id(self, mid):
         for r in self.data:
             if mid == r[0]:
-                r.append(r)
+                return r
             print(r)
             return None
 

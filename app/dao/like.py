@@ -27,26 +27,6 @@ class LikeDAO:
                 return r
             return None
 
-    def get_all_likes(self):
-        likes = []
-        for r in self.data:
-            if r[2] is True:
-                likes.append(r)
-            if len(likes) <= 0:
-                return None
-            else:
-                return likes
-
-    def get_all_dislikes(self):
-        dislikes = []
-        for r in self.data:
-            if r[2] is False:
-                dislikes.append(r)
-            if len(dislikes) <= 0:
-                return None
-            else:
-                return dislikes
-
     def get_like_dislike_by_pk(self, pk):
         for r in self.data:
             if pk == r[3]:

@@ -10,13 +10,16 @@ class ContactHandler:
         mapped_result = []
         for r in result:
             mapped_result.append(self.map_to_dict(r))
-            return jsonify(Part=mapped_result)
+        return jsonify(Part=mapped_result)
 
-    def get_contact_by_id(self, id):
-        for r in self.data:
-            if id == r[0]:
-                return r
-            return None
+    def get_contact_by_uid(self, uid):
+        dao = ContactDAO()
+        result = dao.get_contact_by_uid(uid)
+        if result is None:
+            return jsonify(Error="NOT FOUND"), 404
+        else:
+            mapped = self.map_to_dict(result)
+            return jsonify(Message=mapped)
 
     def map_to_dict(self, row):
         result = {}

@@ -24,9 +24,9 @@ class MessageHandler:
             mapped_result.append(self.map_to_dict(r))
         return jsonify(Message=mapped_result)
 
-    def get_message_by_id(self, message_id):
+    def get_message_by_id(self, mid):
         dao = MessageDAO()
-        result = dao.get_messages_by_id(message_id)
+        result = dao.get_messages_by_message_id(mid)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:

@@ -28,12 +28,12 @@ def register(u_name):
 
 @app.route('/addContact/<string:contact_name>')
 def register_contact(contact_name):
-    return "A new Contact" + contact_name + "has been registered"
+    return "Contact " + contact_name + " has been registered"
 
 
 @app.route('/addContactToChat/<string:contact_name>')
 def add_contact_to_chat(contact_name):
-    return "User " + contact_name + "has been added to a chat"
+    return "User " + contact_name + " has been added to a chat"
 
 
 @app.route('/removeUserFromChat/<string:u_name>')
@@ -43,11 +43,11 @@ def remove_user_from_chat(u_name):
 
 @app.route('/removeUserFromContacts/<string:u_name>')
 def remove_user_from_contacts(u_name):
-    return "User " + u_name + " has been removed from a contacts list"
+    return "User " + u_name + " has been removed from contacts list"
 
 
 # TODO
-@app.route('/UserApp/members')
+@app.route('/MemberApp/members')
 def get_members():
     return MemberHandler().get_all_members()
 
@@ -72,7 +72,7 @@ def get_users_by_last_name(ulname):
     return UserHandler().get_user_by_lname(ulname)
 
 
-@app.route('/UserApp/users/phone/<int:uphone>')
+@app.route('/UserApp/users/phone/<string:uphone>')
 def get_users_by_phone(uphone):
     return UserHandler().get_user_by_phone(uphone)
 
@@ -97,21 +97,22 @@ def get_contacts():
     return ContactHandler().get_all_contacts()
 
 
-@app.route('/UserApp/contacts/<int:uid>')
-def get_contacts_by_id():
-    return ContactHandler().get_contact_by_id()
+# TODO
+@app.route('/UserApp/contacts/uid/<int:uid>')
+def get_contacts_by_id(uid):
+    return ContactHandler().get_contact_by_uid(uid)
 
 
 @app.route('/UserApp/users/likes')
 def get_likes():
-    return LikeHandler().get_all_likes()
+    return LikeHandler().get_all_likes_dislikes()
 
 
 @app.route('/MessageApp/messages')
 def messages():
     return MessageHandler().get_all_messages()
 
-
+# TODO
 @app.route('/MessageApp/messages/mid/<int:mid>')
 def get_messages_by_message_id(mid):
     return MessageHandler().get_message_by_id(mid)

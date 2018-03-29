@@ -27,11 +27,10 @@ class UserDAO:
         return None
 
     def get_user_by_lname(self, lname):
-        result = []
         for r in self.data:
             if lname == r[2]:
-                result.append(r)
-        return result
+                return r
+        return None
 
     def get_user_by_phone(self, phone):
         for r in self.data:

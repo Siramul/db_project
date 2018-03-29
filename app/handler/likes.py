@@ -23,7 +23,7 @@ class LikeHandler:
         dao = LikeDAO()
         result = dao.get_likes_by_user_id(uid)
         if result is None:
-            return jsonify(Error='NOT FOUND')
+            return jsonify(Error='NOT FOUND'), 404
         else:
             mapped = self.map_to_dict(result)
             return jsonify(Likes=mapped)
@@ -32,7 +32,7 @@ class LikeHandler:
         dao = LikeDAO()
         result = dao.get_likes_by_message_id(mid)
         if result is None:
-            return jsonify(Error='NOT FOUND')
+            return jsonify(Error='NOT FOUND'), 404
         else:
             mapped = self.map_to_dict(result)
             return jsonify(Likes=mapped)
@@ -42,8 +42,11 @@ class LikeHandler:
         result = dao.get_all_likes()
         mapped_result = []
         for r in result:
-            mapped_result.append(self.map_to_dict(r))
-        return jsonify(Likes=mapped_result)
+            if r is None:
+                return jsonify(Error='NOT FOUND'), 404
+            else:
+                # mapped_result.append(self.map_to_dict(r))
+                return jsonify(Likes=result)
 
     def get_all_dislikes(self):
         dao = LikeDAO()

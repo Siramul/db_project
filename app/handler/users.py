@@ -4,39 +4,9 @@ from app.dao.user import UserDAO
 
 class UserHandler:
 
-
-    def searchParts(self, args):
-        color = args.get('color')
-        dao = UserDAO()
-        result = dao.searchByColor(color)
-        mapped_result = []
-        for r in result:
-            mapped_result.append(self.mapToDict(r))
-        return jsonify(Part=mapped_result)
-
-    def get_all_users(self):
-        P1 = {}
-        P1['user_id'] = 1
-        P1['first_name'] = 'Joe'
-        P1['last_name'] = 'Martin'
-        P1['phone_number'] = '7879388245'
-        P1['e_mail'] = 'joe.martin@upr.edu'
-        P1['user_name'] = 'joe_martin'
-
-
-        P2 = {}
-        P2['pid'] = 456
-        P2['price'] = 1.50
-        P2['name'] = 'tuerca'
-
-        parts = []
-        parts.append(P1)
-        parts.append(P2)
-        return jsonify(Parts=parts)
-
     def get_user_by_id(self, id):
         dao = UserDAO()
-        result = dao.get_user_by_id(id)
+        result = dao.get_user_by_uid(id)
         if result == None:
             return jsonify(Error="NOT FOUND"), 404
         else :
@@ -60,7 +30,7 @@ class UserHandler:
         result['sname'] = row[1]
         return result
 
-    def getAllUsers(self):
+    def get_all_users(self):
         dao = UserDAO()
         result = dao.get_all_users()
         mapped_result = []
@@ -87,9 +57,9 @@ class UserHandler:
             mapped = self.map_to_dict(result)
             return jsonify(Part=mapped)
 
-    def get_user_by_phone(self, user_phone):
+    def get_user_by_phone(self, phone):
         dao = UserDAO()
-        result = dao.get_user_by_phone(user_phone)
+        result = dao.get_user_by_phone(phone)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:
