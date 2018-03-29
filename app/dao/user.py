@@ -1,6 +1,6 @@
 class UserDAO:
     def __init__(self):
-        u1 = [1, 'Joe', 'Amador', '7879388245', 'joe.martin@upr.edu', 'joe_martin', 'password']
+        u1 = [1, 'Diego', 'Amador', '7879388245', 'joe.martin@upr.edu', 'joe_martin', 'password']
         u2 = [2, 'Diego', 'Amador', '7872349283', 'diego.amador@upr.edu', 'Diego_Amador', 'password']
         u3 = [3, 'Manuel', 'Martinez', '7874628792', 'manuel.martinez@upr.edu', 'manuel_martinez', 'password']
         u4 = [4, 'Luis', 'Santiago', '7877658935', 'luis.santiago@upr.edu', 'luis_santiago', 'password']
@@ -21,16 +21,18 @@ class UserDAO:
         return None
 
     def get_user_by_fname(self, fname):
+        result=[]
         for r in self.data:
             if fname == r[1]:
-                return r
-        return None
+                result.append(r)
+        return result
 
     def get_user_by_lname(self, lname):
+        result = []
         for r in self.data:
             if lname == r[2]:
-                return r
-        return None
+                result.append(r)
+        return result
 
     def get_user_by_phone(self, phone):
         for r in self.data:
