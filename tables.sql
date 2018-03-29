@@ -1,16 +1,55 @@
-create table User(user_id serial primary key, first_name varChar(10), last_name varChar(10),e_mail varChar(20),phone_number varChar(10), password varChar(10),user_name varChar(10));
+CREATE TABLE Users (
+  user_id SERIAL PRIMARY KEY NOT NULL,
+  first_name VARCHAR(10),
+  last_name VARCHAR(10),
+  e_mail VARCHAR(20) NOT NULL,
+  phone_number VARCHAR(10),
+  password VARCHAR(10) NOT NULL,
+  user_name VARCHAR(10) NOT NULL
+);
 
-create table Chat(chat_id serial primary key, chat_name varChar(10),manager integer references User(user_id));
+CREATE TABLE Chat (
+  chat_id SERIAL PRIMARY KEY NOT NULL,
+  chat_name VARCHAR(10) NOT NULL,
+  manager INTEGER REFERENCES Users(user_id) NOT NULL
+);
 
-create table Message(message_id serial primary key,sender integer references User(user_id), content varChar(200),reply_id integer references Message(mesage_id),time_stamp timestamp());
+CREATE TABLE Message (
+  message_id SERIAL PRIMARY KEY NOT NULL,
+  sender INTEGER REFERENCES Users(user_id) NOT NULL,
+  content VARCHAR(200) NOT NULL,
+  reply_id INTEGER,
+  time_stamp TIMESTAMP DEFAULT NOW() NOT NULL,
+  FOREIGN KEY (reply_id) REFERENCES Message(message_id)
+);
 
-create table Member(user_id integer references User(user_id),chat_id integer references Chat(chat_id),primary key (user_id,chat_id));
+CREATE TABLE Member (
+	user_id INTEGER REFERENCES Users(user_id) NOT NULL,
+	chat_id INTEGER REFERENCES Chat(chat_id) NOT NULL,
+	PRIMARY KEY (user_id, chat_id)
+);
 
-create table Contact(user_id integer references User(user_id),contact_id integer references User(user_id),primary key (user_is,contact_id));
+CREATE TABLE Contact (
+	user_id INTEGER REFERENCES Users(user_id) NOT NULL,
+	contact_id INTEGER REFERENCES Users(user_id) NOT NULL,
+	PRIMARY KEY (user_id, contact_id)
+);
 
-create table Like_Dislike(user_id integer references User(user_id),message_id integer references Message (message_id),like_dislike boolean , primary key (user_id, message_id));
+CREATE TABLE Like_Dislike (
+	user_id INTEGER REFERENCES Users(user_id) NOT NULL,
+	message_id INTEGER REFERENCES Message (message_id) NOT NULL,
+	like_dislike BOOLEAN NOT NULL,
+	PRIMARY KEY (user_id, message_id)
+);
 
-create table Reply (user_id integer references User(user_id),message_id integer references Message(message_id),primary key (user_id,message_id));
+CREATE TABLE Reply (
+	user_id INTEGER REFERENCES Users(user_id) NOT NULL,
+	message_id INTEGER REFERENCES Message(message_id) NOT NULL,
+	PRIMARY KEY (user_id, message_id)
+);
 
-create table Contains(chat_id integer references Chat(chat_id),message_id integer references Message (message_id),primary key (chat_id,message_id));
-
+CREATE TABLE Contains (
+	chat_id INTEGER REFERENCES Chat(chat_id) NOT NULL,
+	message_id INTEGER REFERENCES Message (message_id) NOT NULL,
+	PRIMARY KEY (chat_id, message_id)
+);
