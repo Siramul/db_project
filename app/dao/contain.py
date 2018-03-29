@@ -1,5 +1,5 @@
 class ContainDAO:
-    def __init__(self, u_id):
+    def __init__(self):
         # Row Description [chat_id , message_id ]
         c1 = [1, 4]
         c2 = [2, 5]
@@ -10,16 +10,21 @@ class ContainDAO:
         c7 = [1, 7]
         c8 = [2, 8]
 
-        self.u_id = u_id
-        self.data = [c1, c2, c3, c4, c5, c6, c7, c8]
+        self.data = []
+        self.data.append(c1)
+        self.data.append(c2)
+        self.data.append(c3)
+        self.data.append(c4)
+        self.data.append(c5)
+        self.data.append(c6)
+        self.data.append(c7)
+        self.data.append(c8)
 
-    # No handler or route needed. Only for chat implementation purposes.
-    def remove_all_content_from_chat(self, c_id):
+    def get_all_messages_contained_in_chat_by_message_id(self, mid):
         for r in self.data:
-            if r[0] == c_id:
-                self.remove(r)
-            return True
-        return False
+            if mid == r[1]:
+                return r
+            return None
 
     def get_all_id_message_contained_in_chat(self,c_id):
         all_message_id = []

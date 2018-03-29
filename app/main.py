@@ -211,7 +211,7 @@ def create_chat(cname):
 # author: Lumaris
 # Requirement: Remove a user from a chat group.
 @app.route('/RemoveUserFromChat/<string:user>')
-def remove_user_from_chat(user):
+def remove_users_from_chat(user):
     return "User " + user + " was removed from chat!"
 
 
@@ -244,7 +244,7 @@ def dislike_message():
     return "Message disliked!"
 
 
-@app.route('/PostMessage/<string:message')
+@app.route('/PostMessage/<string:message>')
 def post_message(message):
     return "Message " + message + " posted!"
 
