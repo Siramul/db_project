@@ -46,7 +46,6 @@ def remove_user_from_contacts(u_name):
     return "User " + u_name + " has been removed from contacts list"
 
 
-# TODO
 @app.route('/MemberApp/members')
 def get_members():
     return MemberHandler().get_all_members()
