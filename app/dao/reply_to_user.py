@@ -18,13 +18,13 @@ class ReplyDAO:
         for r in self.data:
             if uid == r[0]:
                 return r
-            return None
+        return None
 
     def get_replies_by_mid(self, mid):
         for r in self.data:
             if mid == r[1]:
                 return r
-            return None
+        return None
 
     def get_replies_by_uid_and_mid(self, uid, mid):
         for r in self.data:
@@ -32,4 +32,4 @@ class ReplyDAO:
                 if mid == r[1]:
                     return r
                 return None
-            return None
+        return None

@@ -18,14 +18,13 @@ class MessageDAO:
         for r in self.data:
             if mid == r[0]:
                 return r
-            print(r)
-            return None
+        return None
 
     def get_messages_by_chat_id(self, cid):
         for r in self.data:
             if cid == r[1]:
                 return r
-            return None
+        return None
 
     def get_messages_by_sender(self, sender):
         for r in self.data:

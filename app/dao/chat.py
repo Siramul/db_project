@@ -24,8 +24,7 @@ class ChatDAO:
         for r in self.data:
             if cid == r[0]:
                 return r
-            print(r, cid)
-            return None
+        return None
 
     def get_chat_by_chat_manager(self, cmanager):
         for r in self.data:

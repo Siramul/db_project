@@ -30,16 +30,16 @@ class ContactDAO:
         for r in self.data:
             if uid == r[0]:
                 return r
-            return None
+        return None
 
     def get_contact_by_contact_id(self, cid):
         for r in self.data:
             if cid == r[1]:
                 return r
-            return None
+        return None
 
     def get_contact_by_pkey(self, pkey):
         for r in self.data:
             if pkey == r[2]:
                 return r
-            return None
+        return None

@@ -21,7 +21,7 @@ class ChatHandler:
 
     def get_chats_by_chat_id(self, c_id):
         dao = ChatDAO()
-        result = dao.get_chat_by_cid(c_id)
+        result = dao.get_chat_by_chat_id(c_id)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:
@@ -30,7 +30,7 @@ class ChatHandler:
 
     def get_chats_by_chat_name(self, cname):
         dao = ChatDAO()
-        result = dao.get_chat_by_cname(cname)
+        result = dao.get_chat_by_chat_name(cname)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:
@@ -39,7 +39,7 @@ class ChatHandler:
 
     def get_chats_by_chat_manager(self, cmanager):
         dao = ChatDAO()
-        result = dao.get_chat_by_cmanager(cmanager)
+        result = dao.get_chat_by_chat_manager(cmanager)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
         else:

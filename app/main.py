@@ -96,7 +96,6 @@ def get_contacts():
     return ContactHandler().get_all_contacts()
 
 
-# TODO
 @app.route('/UserApp/contacts/uid/<int:uid>')
 def get_contacts_by_id(uid):
     return ContactHandler().get_contact_by_uid(uid)
@@ -111,7 +110,7 @@ def get_likes():
 def messages():
     return MessageHandler().get_all_messages()
 
-# TODO
+
 @app.route('/MessageApp/messages/mid/<int:mid>')
 def get_messages_by_message_id(mid):
     return MessageHandler().get_message_by_id(mid)
@@ -142,7 +141,7 @@ def get_messages_by_content(content):
     return MessageHandler().get_message_by_content(content)
 
 
-@app.route('/MessageApp/messages/media/<string:media>')
+@app.route('/MessageApp/messages/media/<int:media>')
 def get_messages_by_media(media):
     return MessageHandler().get_message_by_media_uri(media)
 
@@ -172,19 +171,19 @@ def get_replies_by_uid_and_mid(uid,mid):
     return ReplyHandler().get_replies_by_uid_mid(uid, mid)
 
 
-@app.route('/ChatGroupApp/chats/chatid/<int:cid>')
+@app.route('/ChatGroupApp/chats/cid/<int:cid>')
 def get_chat_group_by_chat_id(cid):
-    return ChatHandler().get_chats_by_cid(cid)
+    return ChatHandler().get_chats_by_chat_id(cid)
 
 
-@app.route('/ChatGroupApp/chats/chatname/<string:cname>')
+@app.route('/ChatGroupApp/chats/cname/<string:cname>')
 def get_chat_by_chat_name(cname):
-    return ChatHandler().get_chats_by_cname(cname)
+    return ChatHandler().get_chats_by_chat_name(cname)
 
 
-@app.route('/ChatGroupApp/chats/chatmanager/<int:cmanager>')
+@app.route('/ChatGroupApp/chats/cmanager/<int:cmanager>')
 def get_chat_by_chat_manager(cmanager):
-    return ChatHandler().get_chats_by_cmanager(cmanager)
+    return ChatHandler().get_chats_by_chat_manager(cmanager)
 
 
 # author: Lumaris
