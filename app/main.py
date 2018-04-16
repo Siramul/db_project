@@ -228,11 +228,6 @@ def display_messages_in_chat():
     return "No messages here!"
 
 
-@app.route('/ChatApp/<int:uid>/<int:cid>')
-def get_chat_by_id(uid, cid):
-    return ChatHandler().getChatsById(uid, cid)
-
-
 @app.route('/LikeMessage')
 def like_message():
     return "Message liked!"
