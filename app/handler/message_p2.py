@@ -7,10 +7,12 @@ class MessageHandler2:
     def build_message_dict(self, row):
         result = {}
         result['message_id'] = row[0]
-        result['sender'] = row[1]
+        result['user_name'] = row[1]
         result['content'] = row[2]
         result['reply_id'] = row[3]
         result['time_stamp'] = row[4]
+        result['likes'] = row[5]
+        result['dislikes'] = row[6]
         return result
 
     def users_like_dislike_message_dict(self,row):
