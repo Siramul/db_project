@@ -13,7 +13,17 @@ class MessageDao:
     #List of all messages in the system
     def getAllMessages(self):
         cursor = self.conn.cursor()
-        query = """SELECT * FROM message ;"""
+        query = """SELECT message.message_id, users.user_name, message.content, message.reply_id, message.time_stamp, message.likes, message.dislikes
+                    FROM (SELECT *,
+                             (SELECT COUNT(like_dislike)
+                              FROM like_dislike
+                              WHERE like_dislike = true and message_id = msg.message_id) likes,
+                             (SELECT COUNT(like_dislike)
+                              FROM like_dislike
+                              WHERE like_dislike = false and message_id = msg.message_id) dislikes
+                          FROM message msg) message, users
+                    WHERE message.sender = users.user_id
+                    ORDER BY message.time_stamp DESC;"""
         cursor.execute(query)
         result = []
         for row in cursor:

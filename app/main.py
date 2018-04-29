@@ -1,10 +1,13 @@
 from flask import Flask
 
-from app.handler.message_p2 import  MessageHandler2
+from app.handler.message_p2 import MessageHandler2
 from app.handler.chat_p2 import ChatHandler2
 from app.handler.users_p2 import UsersHandler2
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app)
 
 
 @app.route('/')
