@@ -1,0 +1,13 @@
+<div ng-controller="loginCtrl">
+<form ng-submit = "login()" >
+    <h1>Login</h1>
+    <hr>
+    <label for="username"><b>Username</b></label><br>
+    <input type="text" id="username" ng-model="user_name" required><br>
+
+    <label for="password"><b>Password</b></label><br>
+    <input type="password" id="password" ng-model="password" required><br>
+
+    <input type="submit" value="Login">
+</form>
+</div>

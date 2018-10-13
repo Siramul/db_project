@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 
 from app.handler.message_p2 import MessageHandler2
 from app.handler.chat_p2 import ChatHandler2
@@ -317,7 +317,13 @@ def getuserinfo(user_id):
     return UsersHandler2().getUserInfo(user_id)
 
 
+@app.route('/SignUp', methods=['POST'])
+def signUp():
+    return UsersHandler2().insertNewUser(request.json)
 
+@app.route('/Login', methods=['POST'])
+def login():
+    return UsersHandler2().accessControl(request.get_json('data'))
 
 
 

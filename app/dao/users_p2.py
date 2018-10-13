@@ -49,3 +49,19 @@ class UsersDao2:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, first_name, last_name,  e_mail, phone, password, user_name):
+        cursor = self.conn.cursor()
+        query = """INSERT INTO users(first_name, last_name,  e_mail, phone, password, user_name)VALUES(%s, %s, %s, %s, %s, %s) returning user_id"""
+        cursor.execute(query, (first_name, last_name, e_mail, phone, password, user_name))
+        user_id = cursor.fetchone()[0]
+        self.conn.commit()
+        return user_id
+
+    def authorize(self, username, password):
+        cursor = self.connection.cursor()
+        query = """select * from users where (user_name = %s or e_mail =%s) and password = %s;"""
+        cursor.execute(query,(userna,username,password,))
+        result= cursor.fetchone()
+        self.connection.commit()
+        return result

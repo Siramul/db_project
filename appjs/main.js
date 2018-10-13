@@ -6,7 +6,11 @@
         $routeProvider.when('/login', {
             templateUrl: 'pages/login.html',
             controller: 'LoginController',
-            controllerAs : 'logingCtrl'
+            controllerAs : 'loginCtrl'
+        }).when('/signup', {
+            templateUrl: 'pages/signup.html',
+            controller: 'SignUpController',
+            controllerAs : 'signupCtrl'
         }).when('/chat', {
             templateUrl: 'pages/chat.html',
             controller: 'ChatController',
